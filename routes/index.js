@@ -11,7 +11,7 @@ router.get('/options', function(req, res, next) {
     Activity.findAll()
   ])
   .spread(function(dbHotels, dbRestaurants, dbActivities) {
-    res.json([dbHotels,dbRestaurants, dbActivities]);
+    res.json([dbHotels, dbRestaurants, dbActivities]);
   })
   .catch(next);
 });

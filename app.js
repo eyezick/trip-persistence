@@ -25,9 +25,13 @@ app.use('/jquery', express.static(path.join(__dirname, '/node_modules/jquery/dis
 // serve any other static files
 app.use(express.static(path.join(__dirname, '/public')));
 
-// serve dynamic routes
-
+// AJAX requests to /api
 app.use('/api',require('./routes'));
+
+// serve index to user
+app.use('/', function(req, res, next) {
+  res.render('index');
+});
 
 // failed to catch req above means 404, forward to error handler
 app.use(function (req, res, next) {
