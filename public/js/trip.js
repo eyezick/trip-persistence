@@ -53,6 +53,8 @@ var tripModule = (function () {
       currentDay = newDay;
     }
     switchTo(newDay);
+
+    dataModule.ajaxPost(newDay.number-1)
   }
 
   function deleteCurrentDay () {
