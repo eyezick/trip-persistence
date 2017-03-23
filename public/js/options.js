@@ -11,16 +11,35 @@
 
 $(function(){
 
-  // jQuery selects
-  var $optionsPanel = $('#options-panel');
-  var $hotelSelect = $optionsPanel.find('#hotel-choices');
-  var $restaurantSelect = $optionsPanel.find('#restaurant-choices');
-  var $activitySelect = $optionsPanel.find('#activity-choices');
+    // const allHotels = $('#hotel-choices');
+    // const allRestaurants = $('#restaurant-choices');
+    // const allActivities = $('#activity-choices');
 
-  // make all the option tags (second arg of `forEach` is a `this` binding)
-  hotels.forEach(makeOption, $hotelSelect);
-  restaurants.forEach(makeOption, $restaurantSelect);
-  activities.forEach(makeOption, $activitySelect);
+    var $optionsPanel = $('#options-panel');
+    var $hotelSelect = $optionsPanel.find('#hotel-choices');
+    var $restaurantSelect = $optionsPanel.find('#restaurant-choices');
+    var $activitySelect = $optionsPanel.find('#activity-choices');
+
+            dataModule.ajaxCall
+            .then(function(data) {
+
+                data[0].forEach(makeOption, $hotelSelect)
+                data[1].forEach(makeOption, $restaurantSelect)
+                data[2].forEach(makeOption, $activitySelect)
+
+            });
+
+
+  // jQuery selects
+  // var $optionsPanel = $('#options-panel');
+  // var $hotelSelect = $optionsPanel.find('#hotel-choices');
+  // var $restaurantSelect = $optionsPanel.find('#restaurant-choices');
+  // var $activitySelect = $optionsPanel.find('#activity-choices');
+  //
+  // // make all the option tags (second arg of `forEach` is a `this` binding)
+  // hotels.forEach(makeOption, $hotelSelect);
+  // restaurants.forEach(makeOption, $restaurantSelect);
+  // activities.forEach(makeOption, $activitySelect);
 
   function makeOption (databaseAttraction) {
     var $option = $('<option></option>') // makes a new option tag

@@ -7,9 +7,25 @@
  * to add an attraction in the `options` module.
  */
 
+let hotels
+let restaurants
+let activities
+
+
 var attractionsModule = (function () {
 
   // application state
+
+
+
+    dataModule.ajaxCall.then(function (data) {
+
+        hotels = data[0]
+        restaurants = data[1]
+        activities = data[2]
+
+    })
+
 
   var enhanced = {
     hotels: hotels.map(attractionModule.create),
