@@ -22,11 +22,10 @@ $(function(){
 
             dataModule.ajaxCall
             .then(function(data) {
-
-                data[0].forEach(makeOption, $hotelSelect)
-                data[1].forEach(makeOption, $restaurantSelect)
-                data[2].forEach(makeOption, $activitySelect)
-
+                data[0].forEach(makeOption, $hotelSelect);
+                data[1].forEach(makeOption, $restaurantSelect);
+                data[2].forEach(makeOption, $activitySelect);
+                attractionsModule.setAttraction(data);
             });
 
 

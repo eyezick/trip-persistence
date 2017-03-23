@@ -7,30 +7,19 @@
  * to add an attraction in the `options` module.
  */
 
-let hotels
-let restaurants
-let activities
-
+// var hotels;
+// var restaurants;
+// var activities;
 
 var attractionsModule = (function () {
 
   // application state
+  var allAttractions = {
 
+    hotels: [],
+    restaurants: [],
+    activities: []
 
-
-    dataModule.ajaxCall.then(function (data) {
-
-        hotels = data[0]
-        restaurants = data[1]
-        activities = data[2]
-
-    })
-
-
-  var enhanced = {
-    hotels: hotels.map(attractionModule.create),
-    restaurants: restaurants.map(attractionModule.create),
-    activities: activities.map(attractionModule.create),
   };
 
   // private helper methods (only available inside the module)
@@ -41,14 +30,20 @@ var attractionsModule = (function () {
     });
   }
 
-  // globally accessible module methods (available to other modules)
+  // var enhanced = {
+  //   hotels: hotels.map(attractionModule.create),
+  //   restaurants: restaurants.map(attractionModule.create),
+  //   activities: activities.map(attractionModule.create),
+  // };
 
+  // globally accessible module methods (available to other modules)
+  
   var publicAPI = {
 
     getByTypeAndId: function (type, id) {
-      if (type === 'hotel') return findById(enhanced.hotels, id);
-      else if (type === 'restaurant') return findById(enhanced.restaurants, id);
-      else if (type === 'activity') return findById(enhanced.activities, id);
+      if (type === 'hotel') return findById(allAttractions.hotels, id);
+      else if (type === 'restaurant') return findById(allAttractions.restaurants, id);
+      else if (type === 'activity') return findById(allAttractions.activities, id);
       else throw Error('Unknown attraction type');
     },
 
@@ -58,6 +53,13 @@ var attractionsModule = (function () {
       var found = publicAPI.getByTypeAndId(type, id);
       if (found) return found;
       throw Error('enhanced version not found', databaseAttraction);
+    },
+
+    setAttraction: function (data) {
+      allAttractions.hotels = data[0].map(attractionModule.create);
+      allAttractions.restaurants = data[1].map(attractionModule.create);
+      allAttractions.activities = data[2].map(attractionModule.create);
+
     }
 
   };

@@ -1,5 +1,3 @@
-
-
 var dataModule = (function () {
 
     var publicAPI = {
@@ -9,6 +7,7 @@ var dataModule = (function () {
             url: '/api/options'
         })
 
-    }
-    return publicAPI
-}())
+    };
+    return publicAPI;
+
+}());

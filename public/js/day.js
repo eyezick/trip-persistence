@@ -15,6 +15,10 @@
 
 var dayModule = (function () {
 
+  // populate
+  // var attractionsModuleAPI = attractionsModule.then();
+
+
   // jQuery selections
 
   var $dayButtons, $dayTitle;
@@ -33,6 +37,7 @@ var dayModule = (function () {
     this.activities = [];
     // for days based on existing data
     utilsModule.merge(data, this);
+
     if (this.hotel) this.hotel = attractionsModule.getEnhanced(this.hotel);
     this.restaurants = this.restaurants.map(attractionsModule.getEnhanced);
     this.activities = this.activities.map(attractionsModule.getEnhanced);

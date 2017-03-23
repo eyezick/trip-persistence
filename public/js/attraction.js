@@ -24,8 +24,6 @@ var attractionModule = (function () {
     $hotel = $itinerary.find('ul[data-type="hotel"]');
     $restaurants = $itinerary.find('ul[data-type="restaurants"]');
     $activities = $itinerary.find('ul[data-type="activities"]');
-
-
   });
 
   // Attraction class setup
